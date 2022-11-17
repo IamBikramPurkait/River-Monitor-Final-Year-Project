@@ -1,12 +1,17 @@
-import pyautogui
-import time
+from PIL import Image, ImageChops
 
-time.sleep(5)
 
-text = 'kire bhai code patha'
+# assign images
 
-for i in range(10):
-    pyautogui.typewrite(text)
+img1 = Image.open("dataset/4.jpg")
 
-    time.sleep(2)
-    pyautogui.press('enter')
+img2 = Image.open("dataset/5.jpg")
+
+
+# finding difference
+
+diff = ImageChops.difference(img1, img2)
+
+output = diff.save('output.jpg')
+
+diff.show()
